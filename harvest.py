@@ -158,11 +158,27 @@ def get_sellability_report(melons):
         print(f"{melon.name}: Harvested by {melon.harvester} from Field {melon.field} ({sell_status})")
 
 
-
-
-
+def make_melons_from_file(input_file):
+    """melon object syntax = (melon_type, shape_rating, color_rating, field, harvester, name)"""
+    file = open(input_file)
+    melon_type_by_code = make_melon_type_lookup(make_melon_types())
+    melons = []
+    melon_num = 1
+    
+    for line in file:
+        melon_name = "Melon " + str(melon_num)
+        line = line.rstrip()
+        words = line.split(" ")
+        melon = Melon(melon_type_by_code[words[5]],int(words[1]),int(words[3]),int(words[11]),words[8],melon_name)
+        melon_num += 1
+        melons.append(melon)
+        
+    return melons
+        
 
 get_sellability_report(make_melons(make_melon_types))
+print("--------------------------------------")
+get_sellability_report(make_melons_from_file("harvest_log.txt"))
 
 
 
