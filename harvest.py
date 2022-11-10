@@ -158,6 +158,20 @@ def get_sellability_report(melons):
         print(f"{melon.name}: Harvested by {melon.harvester} from Field {melon.field} ({sell_status})")
 
 
+
+
+get_sellability_report(make_melons(make_melon_types))
+
+
+
+# for item in test_melon_type_lookup.items():
+#     print(f"code: {item[0]}, name: {item[1].name}, first harvest: {item[1].first_harvest}") 
+#     print(f"color: {item[1].color}, is seedless: {item[1].is_seedless}, is bestseller: {item[1].is_bestseller}")
+#     print()
+# 
+# test = test_melon_type_lookup.items()
+# print(test)
+
 def make_melons_from_file(input_file):
     """melon object syntax = (melon_type, shape_rating, color_rating, field, harvester, name)"""
     file = open(input_file)
